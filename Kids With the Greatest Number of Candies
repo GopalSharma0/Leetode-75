@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findmax(vector<int>arr){
+        int maxi = 0;
+        for(auto i:arr){
+            if(i>maxi) maxi=i;
+        }
+        return maxi;
+    }
+    
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+     
+        
+        
+        int lastEle = findmax(candies);
+        vector<bool>res;
+        for(auto i:candies){
+            if(i+extraCandies >= lastEle) res.push_back(true);
+            else res.push_back(false);
+        }
+        return res;
+    }
+};
