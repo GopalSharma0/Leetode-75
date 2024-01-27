@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+        
+        string vowels = "aeiou";
+        int startingWindowCount=0;
+        int finalCount=0;
+        for(int i=0;i<k;i++){
+            if(vowels.find(s[i]) != string::npos){
+                startingWindowCount++;
+            }
+        }
+        finalCount=startingWindowCount;
+        int CurrentWindowCount = startingWindowCount;
+        for(int i=k;i<s.size();i++){
+            
+            if(vowels.find(s[i-k]) !=string::npos) CurrentWindowCount--;
+            if(vowels.find(s[i]) !=string::npos) CurrentWindowCount++;
+            finalCount=max(CurrentWindowCount,finalCount);
+        }
+        return finalCount;
+        
+    }
+};
