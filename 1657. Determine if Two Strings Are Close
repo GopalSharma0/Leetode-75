@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        
+        map<char,int>mp1;
+         map<char,int>mp2;
+        
+        for(auto it:word1) mp1[it]++;
+        for(auto it:word2) mp2[it]++;
+        string s1,s2;
+        string c1,c2;
+        
+        for(auto it:mp1) {
+            s1+=it.first;
+            c1+=it.second;
+            
+        }
+        
+        for(auto it:mp2) {
+            s2+=it.first;
+            c2+=it.second;
+        }
+        if(s1!=s2)return false;
+        sort(c1.begin(),c1.end());
+        sort(c2.begin(),c2.end());
+        if(c1!=c2)return false;
+        return true;
+    }
+};
